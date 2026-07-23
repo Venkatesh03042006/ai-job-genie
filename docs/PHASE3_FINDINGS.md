@@ -687,3 +687,15 @@ so `TfidfVectorizer`'s tokenizer is behaving correctly on messy input.
 Confirmed by inspecting raw source text directly; left as-is, since a
 corpus-wide rejoin heuristic risks false-positive merges elsewhere and is
 out of scope relative to the size of the issue.
+
+## Addendum (Phase 5): GitHub repo kept private - data-governance note
+
+The GitHub repo hosting this project (and its Railway/Vercel deployments)
+is kept **private**, deliberately. `ml/data/processed/postings_filtered.parquet`
+is derived from a third-party-scraped LinkedIn job postings dataset whose
+original redistribution terms haven't been reviewed - publishing it in a
+public repo would republish that derived data to anyone, without a clear
+basis for whether that's permitted. This is a data-governance decision,
+not an oversight: the repo can be made public later if the source
+dataset's license is confirmed to allow it, or if the parquet is stripped
+from the repo first.
