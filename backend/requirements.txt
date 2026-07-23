@@ -1,0 +1,22 @@
+Django>=5.0
+djangorestframework
+django-cors-headers
+PyMySQL
+pdfplumber
+python-docx
+python-dotenv
+
+# Required at runtime by ml/src (matching/services.py imports src.config,
+# src.data.loader, src.explainability, src.models.tfidf_baseline) - NOT
+# ml/requirements.txt's torch/sentence-transformers, which only the
+# abandoned SBERT path (src/models/sbert_baseline.py) needs. This app
+# never imports that module.
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+pyarrow>=14.0.0
+PyYAML>=6.0
+
+# Production server
+gunicorn
+whitenoise

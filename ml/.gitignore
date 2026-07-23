@@ -1,0 +1,19 @@
+# Raw and processed datasets are user-provided / generated - don't commit
+# them, EXCEPT postings_filtered.parquet: the deployed Django backend
+# (backend/matching/services.py) loads this one directly at runtime, and
+# production has no raw postings.csv (~517MB, not committed) to regenerate
+# it from - see docs/PHASE3_FINDINGS.md and backend deployment prep notes.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/processed/postings_filtered.parquet
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Fine-tuned model weights/checkpoints - large binaries, regenerate via scripts/finetune_sbert.py
+models/

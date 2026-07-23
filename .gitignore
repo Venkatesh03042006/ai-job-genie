@@ -1,0 +1,15 @@
+# ml/ has its own .gitignore (data/raw/, models/ etc.) - see that file for
+# the deploy-relevant exception (postings_filtered.parquet).
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Django (repo-wide fallback - backend/.gitignore also covers these locally)
+staticfiles/
+
+# OS
+.DS_Store

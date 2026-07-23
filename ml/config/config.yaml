@@ -1,0 +1,151 @@
+# Phase 1 data preparation config. Paths are relative to the ml/ directory.
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  results_dir: results
+  resumes_dataset: data/raw/resume_data.csv # resume-side dataset (career_objective/skills/positions fields only - see below)
+  postings_dataset: data/raw/postings.csv # LinkedIn Job Postings (~517MB raw CSV) - job-description side
+  postings_cache: data/processed/postings_filtered.parquet # postings.csv filtered to target categories + projected columns, built by scripts/build_postings_cache.py
+  resumes_relabeled_cache: data/processed/resumes_relabeled.parquet # deduplicated (344 unique) + content-relabeled resume profiles, built by scripts/build_resume_labels_cache.py - see docs/PHASE3_FINDINGS.md
+  pairs_output: data/processed/pairs.jsonl
+  triples_output: data/processed/triples.jsonl
+  baseline_results_json: results/baseline_results.json
+  baseline_results_table: results/baseline_metrics_table.md
+  finetuned_model_dir: models/finetuned-sbert
+  phase3_results_json: results/phase3_results.json
+  phase3_results_table: results/phase3_comparison_table.md
+
+# Column names in each raw dataset, mapped to what the pipeline needs.
+# resume_fields are concatenated (in order) into one resume_text per row.
+# NOTE: `responsibilities` is intentionally excluded - see docs/PHASE3_FINDINGS.md
+# section 5 (it's a 28-way category template, identical text duplicated
+# verbatim into every job side field, not real per-instance content).
+# NOTE: there is no `category` column for resumes anymore - the raw
+# `job_position_name` stamp is a cross-product artifact, not a real
+# per-profile label (see docs/PHASE3_FINDINGS.md's "Category label
+# mismatch" section); src/data/relabel.py assigns a content-derived one.
+columns:
+  resumes:
+    resume_fields:
+      - career_objective
+      - skills
+      - positions
+  postings:
+    id: job_id
+    title: title
+    description: description
+    experience_level: formatted_experience_level
+    location: location
+
+# `all`: the 14 (of 28) resume categories with genuine (100+) real-posting
+# title coverage in postings.csv - see src/data/category_keywords.py for the
+# title-keyword patterns used to assign postings to these categories. Used
+# by scripts/build_postings_cache.py (job-side cache scope) and
+# scripts/build_resume_labels_cache.py (the full candidate set a resume's
+# content-derived category is chosen from - see src/data/relabel.py) - both
+# want the full universe regardless of how `target` below is narrowed.
+#
+# `target`: the ACTIVE category scope for everything downstream (pairing,
+# splitting, training, evaluation) - a subset of `all`, narrowed to
+# categories with >=25 content-relabeled resume profiles (see
+# docs/PHASE3_FINDINGS.md's "Category label mismatch" section, "Scope
+# narrowing" subsection). The 9 categories below this threshold (System
+# Administrator=15, Manager-HRM=14, Full Stack Developer=13, DBA=12, Civil
+# Engineer=12, Marketing Officer=9, Network Support Engineer=8, Project
+# Coordinator=7, DevOps Engineer=3) don't have enough resumes for a
+# statistically meaningful stratified train/val/test split once the
+# cross-product duplication (see docs/PHASE3_FINDINGS.md section 5) is
+# removed, so they're excluded from `target` rather than reported on
+# unreliably. Keep in sync manually if the relabeling ever changes.
+categories:
+  all: # see src/data/category_keywords.py TARGET_CATEGORIES (kept in sync manually)
+    - Database Administrator (DBA)
+    - Full Stack Developer (Python,React js)
+    - DevOps Engineer
+    - Network Support Engineer
+    - System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)
+    - Data Engineer
+    - Data Science Engineer
+    - Senior Software Engineer
+    - Civil Engineer
+    - Mechanical Engineer
+    - Project Coordinator (Civil)
+    - Manager- Human Resource Management (HRM)
+    - Marketing Officer
+    - Business Development Executive
+  target:
+    - Data Science Engineer
+    - Mechanical Engineer
+    - Senior Software Engineer
+    - Business Development Executive
+    - Data Engineer
+
+pairing:
+  # weak supervision: positives = resume + a JD sampled from the SAME
+  # (normalized) category; negatives = resume + a JD from a DIFFERENT
+  # (normalized) category. No matched_score dependency (see
+  # docs/PHASE3_FINDINGS.md - matched_score is a formulaic label from a
+  # synthetic cross-product generation process, not a real relevance signal).
+  positives_per_resume: 3
+  negatives_per_resume: 3
+  normalize_categories: true # lowercase + strip punctuation before matching
+  random_seed: 42
+
+chunking:
+  # "bullet": resume skills/positions lines and most real JD descriptions
+  # (~83% have 2+ newlines) are bullet/line-structured; chunk_text() falls
+  # back to sentence-splitting per-document for the rest (prose JDs).
+  mode: bullet
+  min_chunk_chars: 15 # drop fragments shorter than this
+  max_chunk_chars: 400 # split anything longer than this at sentence boundaries
+
+triples:
+  chunks_per_resume: 3 # how many resume chunks to anchor triples on
+  random_seed: 42
+  # Chunks shorter than this are excluded from pairing entirely (falls back
+  # to a doc's single longest chunk if none clear the bar) - drops
+  # boilerplate fragments (e.g. "Full-time", "Bachelor's degree") too short
+  # to teach real matching.
+  min_informative_chars: 40
+
+# Stratified by category (src/data/split.py) so held-out val/test sets get
+# proportional coverage from every category in `categories.target` - which
+# is itself already narrowed to categories with enough content-relabeled
+# resumes (>=25 - see the `categories.target` comment above) for that
+# stratification to be meaningful.
+split:
+  train_frac: 0.8
+  val_frac: 0.1
+  test_frac: 0.1
+  random_seed: 42
+
+# Embedding model Phase 2/3 will load - kept here so all phases read the
+# same config instead of hardcoding the checkpoint name separately.
+model:
+  base_checkpoint: sentence-transformers/all-MiniLM-L6-v2
+  # Extra pretrained checkpoints evaluated as additional Baseline B rows
+  # (e.g. a retrieval-tuned asymmetric query/document model), purely for
+  # comparison - Phase 3 still fine-tunes base_checkpoint.
+  additional_sbert_checkpoints:
+    - sentence-transformers/multi-qa-MiniLM-L6-cos-v1
+
+# Phase 2 baseline evaluation, run on the test split only.
+evaluation:
+  ks: [1, 3, 5] # Precision@k values to report
+  eval_split: test
+
+# Phase 3: fine-tune model.base_checkpoint on split == "train" triples with
+# MultipleNegativesRankingLoss. split == "val" is used only for
+# best-checkpoint selection (TripletEvaluator accuracy); split == "test" is
+# never touched here.
+training:
+  batch_size: 16 # also sets in-batch negative count for MNRL - see finetune_sbert.py
+  eval_batch_size: 32
+  learning_rate: 2.0e-5 # standard SBERT fine-tuning LR; higher risks overwriting pretrained knowledge on ~10.7k examples
+  epochs: 4 # modest, transfer-learning-sized dataset; load_best_model_at_end guards against overfitting past the optimum
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  save_total_limit: 2 # keep disk usage bounded; the actual best model is saved separately regardless
+  save_eval_steps: 200 # checkpoint + val-eval every N steps (~5-6 min at observed CPU pace), not just per-epoch, so an interrupted run has a recent checkpoint to resume from
+  seed: 42

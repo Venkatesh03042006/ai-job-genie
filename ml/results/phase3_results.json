@@ -1,0 +1,1381 @@
+{
+  "config": {
+    "min_matched_score": 0.7,
+    "eval_split": "test",
+    "ks": [
+      1,
+      3,
+      5
+    ],
+    "training": {
+      "batch_size": 16,
+      "eval_batch_size": 32,
+      "learning_rate": 2e-05,
+      "epochs": 4,
+      "warmup_ratio": 0.1,
+      "weight_decay": 0.01,
+      "save_total_limit": 2,
+      "save_eval_steps": 200,
+      "seed": 42
+    },
+    "base_checkpoint": "sentence-transformers/all-MiniLM-L6-v2",
+    "finetuned_model_dir": "C:\\Users\\Venkatesh\\OneDrive\\Documents\\CCP\\AI-Job genie\\ml\\models\\finetuned-sbert",
+    "val_triplet_accuracy_pretrained": 0.5496048927307129,
+    "val_triplet_accuracy_finetuned": 0.6409130692481995,
+    "hybrid_alpha_sweep": {
+      "split": "val",
+      "results": [
+        {
+          "alpha": 0.3,
+          "precision_at_1": 0.032327586206896554,
+          "precision_at_3": 0.033764367816091954,
+          "precision_at_5": 0.03189655172413793,
+          "reciprocal_rank": 0.1268500777183521,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.5,
+          "precision_at_1": 0.034482758620689655,
+          "precision_at_3": 0.028735632183908042,
+          "precision_at_5": 0.03017241379310345,
+          "reciprocal_rank": 0.12665629694158914,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.7,
+          "precision_at_1": 0.021551724137931036,
+          "precision_at_3": 0.028735632183908042,
+          "precision_at_5": 0.02887931034482759,
+          "reciprocal_rank": 0.11995224791431833,
+          "n_queries": 464,
+          "n_candidates": 952
+        }
+      ]
+    },
+    "hybrid_best_alpha": 0.3,
+    "hybrid_alpha_sweep_raw": {
+      "split": "val",
+      "results": [
+        {
+          "alpha": 0.3,
+          "precision_at_1": 0.032327586206896554,
+          "precision_at_3": 0.033764367816091954,
+          "precision_at_5": 0.03189655172413793,
+          "reciprocal_rank": 0.1268500777183521,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.5,
+          "precision_at_1": 0.034482758620689655,
+          "precision_at_3": 0.028735632183908042,
+          "precision_at_5": 0.03017241379310345,
+          "reciprocal_rank": 0.12665629694158914,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.7,
+          "precision_at_1": 0.021551724137931036,
+          "precision_at_3": 0.028735632183908042,
+          "precision_at_5": 0.02887931034482759,
+          "reciprocal_rank": 0.11995224791431833,
+          "n_queries": 464,
+          "n_candidates": 952
+        }
+      ]
+    },
+    "hybrid_alpha_sweep_normalized": {
+      "split": "val",
+      "results": [
+        {
+          "alpha": 0.3,
+          "precision_at_1": 0.028017241379310345,
+          "precision_at_3": 0.025143678160919537,
+          "precision_at_5": 0.027155172413793106,
+          "reciprocal_rank": 0.11414523274424714,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.5,
+          "precision_at_1": 0.032327586206896554,
+          "precision_at_3": 0.03017241379310345,
+          "precision_at_5": 0.03060344827586207,
+          "reciprocal_rank": 0.12646896582892006,
+          "n_queries": 464,
+          "n_candidates": 952
+        },
+        {
+          "alpha": 0.7,
+          "precision_at_1": 0.034482758620689655,
+          "precision_at_3": 0.032327586206896554,
+          "precision_at_5": 0.03060344827586207,
+          "reciprocal_rank": 0.1300782544538907,
+          "n_queries": 464,
+          "n_candidates": 952
+        }
+      ]
+    },
+    "hybrid_best_alpha_raw": 0.3,
+    "hybrid_best_alpha_normalized": 0.7
+  },
+  "results": {
+    "tfidf": {
+      "matcher": "tfidf",
+      "overall": {
+        "precision_at_1": 0.06221198156682028,
+        "precision_at_3": 0.03763440860215053,
+        "precision_at_5": 0.034101382488479264,
+        "reciprocal_rank": 0.14957201063478084,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.04,
+          "precision_at_3": 0.026666666666666665,
+          "precision_at_5": 0.016,
+          "reciprocal_rank": 0.11174433293883008,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.02898550724637681,
+          "precision_at_5": 0.034782608695652174,
+          "reciprocal_rank": 0.10265045662159025,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.1,
+          "reciprocal_rank": 0.1467391304347826,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.048330527497194166,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.1111111111111111,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.18910972469795997,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.018518518518518517,
+          "precision_at_5": 0.03333333333333334,
+          "reciprocal_rank": 0.08749740420287459,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.0967741935483871,
+          "precision_at_3": 0.04301075268817204,
+          "precision_at_5": 0.03870967741935485,
+          "reciprocal_rank": 0.1855599041468015,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.047619047619047616,
+          "precision_at_5": 0.0380952380952381,
+          "reciprocal_rank": 0.1514165008908716,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.125,
+          "precision_at_3": 0.08333333333333333,
+          "precision_at_5": 0.05,
+          "reciprocal_rank": 0.20911032479526726,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.028571428571428574,
+          "reciprocal_rank": 0.1311484802290802,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.058823529411764705,
+          "precision_at_5": 0.047058823529411764,
+          "reciprocal_rank": 0.14432267079325903,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.015873015873015872,
+          "precision_at_5": 0.01904761904761905,
+          "reciprocal_rank": 0.1287944678137071,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.11000203500203501,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.07205237340317985,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.09523809523809523,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.01904761904761905,
+          "reciprocal_rank": 0.14548083317401422,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.11538461538461539,
+          "precision_at_3": 0.07692307692307693,
+          "precision_at_5": 0.05384615384615385,
+          "reciprocal_rank": 0.22673043020328087,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.058823529411764705,
+          "precision_at_3": 0.0392156862745098,
+          "precision_at_5": 0.03529411764705883,
+          "reciprocal_rank": 0.14886137399554739,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.043478260869565216,
+          "precision_at_3": 0.02898550724637681,
+          "precision_at_5": 0.043478260869565216,
+          "reciprocal_rank": 0.12809780062151058,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.2,
+          "precision_at_3": 0.13333333333333333,
+          "precision_at_5": 0.12000000000000002,
+          "reciprocal_rank": 0.3869047619047619,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.1111111111111111,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.18470013646484235,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.12907811747681028,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.07692307692307693,
+          "precision_at_3": 0.02564102564102564,
+          "precision_at_5": 0.03076923076923077,
+          "reciprocal_rank": 0.1494833615374091,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.2,
+          "precision_at_3": 0.06666666666666667,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.2488463026911169,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.05263157894736842,
+          "precision_at_3": 0.017543859649122806,
+          "precision_at_5": 0.010526315789473684,
+          "reciprocal_rank": 0.11480365510871542,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.058823529411764705,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.023529411764705882,
+          "reciprocal_rank": 0.11801853216485808,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.25,
+          "precision_at_3": 0.08333333333333333,
+          "precision_at_5": 0.05,
+          "reciprocal_rank": 0.299205105239588,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.18181818181818182,
+          "precision_at_3": 0.0606060606060606,
+          "precision_at_5": 0.03636363636363637,
+          "reciprocal_rank": 0.23043215787064453,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03508771929824561,
+          "precision_at_5": 0.042105263157894736,
+          "reciprocal_rank": 0.12298731652278563,
+          "n_queries": 19
+        }
+      }
+    },
+    "sbert_pretrained": {
+      "matcher": "sbert_pretrained",
+      "overall": {
+        "precision_at_1": 0.004608294930875576,
+        "precision_at_3": 0.016129032258064516,
+        "precision_at_5": 0.013364055299539173,
+        "reciprocal_rank": 0.055904532581937734,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.008,
+          "reciprocal_rank": 0.03888585641699637,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.019113186304547888,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.5,
+          "precision_at_3": 0.16666666666666666,
+          "precision_at_5": 0.1,
+          "reciprocal_rank": 0.5227272727272727,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.01740079365079365,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.08873027391689037,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.05555555555555555,
+          "precision_at_3": 0.05555555555555555,
+          "precision_at_5": 0.03333333333333334,
+          "reciprocal_rank": 0.1382584551544286,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.02150537634408602,
+          "precision_at_5": 0.012903225806451613,
+          "reciprocal_rank": 0.062464626010875796,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.016946545183782295,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.025179601837318617,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.015873015873015872,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.042445257174951456,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.024633955300690836,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.01904761904761905,
+          "reciprocal_rank": 0.08576203707836114,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.03665441234878519,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03333333333333333,
+          "precision_at_5": 0.02,
+          "reciprocal_rank": 0.0771965026635221,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.02042135223471629,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.01282051282051282,
+          "precision_at_5": 0.015384615384615385,
+          "reciprocal_rank": 0.0816499114605757,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.01301210426006837,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.014492753623188404,
+          "precision_at_5": 0.008695652173913044,
+          "reciprocal_rank": 0.02300422419735313,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.06666666666666667,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.1451794871794872,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.06471451306131619,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.00673279472509839,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.038461538461538464,
+          "precision_at_5": 0.03076923076923077,
+          "reciprocal_rank": 0.09524710900502485,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03333333333333333,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.08136297838414386,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.03399575271389884,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.023529411764705882,
+          "reciprocal_rank": 0.07657243826101008,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.030586951559352073,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.0033385808748385565,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.017543859649122806,
+          "precision_at_5": 0.03157894736842106,
+          "reciprocal_rank": 0.08902543357466632,
+          "n_queries": 19
+        }
+      }
+    },
+    "sbert_multi_qa_minilm_l6_cos_v1": {
+      "matcher": "sbert_multi_qa_minilm_l6_cos_v1",
+      "overall": {
+        "precision_at_1": 0.002304147465437788,
+        "precision_at_3": 0.009216589861751152,
+        "precision_at_5": 0.011059907834101384,
+        "reciprocal_rank": 0.040389705278394264,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.008,
+          "reciprocal_rank": 0.03129217170886442,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.014492753623188404,
+          "precision_at_5": 0.008695652173913044,
+          "reciprocal_rank": 0.019931463150414937,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.1,
+          "reciprocal_rank": 0.12931034482758622,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.0027830632916258243,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.07407407407407407,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.12633944133944133,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.028654860194767626,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.016006663616082984,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.017713433920672334,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.025,
+          "reciprocal_rank": 0.04946666126589489,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.015873015873015872,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.046895041012350334,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.023529411764705882,
+          "reciprocal_rank": 0.05113877460967746,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.047619047619047616,
+          "reciprocal_rank": 0.13607194451857196,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.0388292093054311,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03333333333333333,
+          "precision_at_5": 0.02,
+          "reciprocal_rank": 0.10601063273643918,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.015873015873015872,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.046845526204663146,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.03867058371478533,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.003064024179419799,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.008695652173913044,
+          "reciprocal_rank": 0.01439829420634588,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.06666666666666667,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.16123053923084854,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.013221293315893366,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.040558976889209106,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.01282051282051282,
+          "precision_at_5": 0.015384615384615385,
+          "reciprocal_rank": 0.06579208827828403,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.014444744019922198,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.012200414831054739,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.011764705882352941,
+          "reciprocal_rank": 0.0556924856156001,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.006761429339862696,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.0024553283562900267,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.01227068556405371,
+          "n_queries": 19
+        }
+      }
+    },
+    "sbert_finetuned": {
+      "matcher": "sbert_finetuned",
+      "overall": {
+        "precision_at_1": 0.013824884792626729,
+        "precision_at_3": 0.014592933947772656,
+        "precision_at_5": 0.010138248847926268,
+        "reciprocal_rank": 0.05471135764998624,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.04,
+          "precision_at_5": 0.024000000000000004,
+          "reciprocal_rank": 0.07696441805545744,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.043478260869565216,
+          "precision_at_3": 0.014492753623188404,
+          "precision_at_5": 0.008695652173913044,
+          "reciprocal_rank": 0.07311860379553632,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.16666666666666666,
+          "precision_at_5": 0.2,
+          "reciprocal_rank": 0.26666666666666666,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.03512598289617173,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.022801417484534476,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.018518518518518517,
+          "precision_at_5": 0.011111111111111112,
+          "reciprocal_rank": 0.04697228070214182,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.01075268817204301,
+          "precision_at_5": 0.019354838709677424,
+          "reciprocal_rank": 0.06498086266844248,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.006815177226183921,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.041666666666666664,
+          "precision_at_5": 0.025,
+          "reciprocal_rank": 0.07368500921155818,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.044039540394375444,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.009199589260937979,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.03414989661832905,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.004868406988687301,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.072759621206452,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.013234443606117696,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.038461538461538464,
+          "precision_at_3": 0.02564102564102564,
+          "precision_at_5": 0.015384615384615385,
+          "reciprocal_rank": 0.10798186780460726,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.006268290882698803,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.014492753623188404,
+          "precision_at_5": 0.008695652173913044,
+          "reciprocal_rank": 0.03182171273394057,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.2,
+          "precision_at_3": 0.06666666666666667,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.2112759505224147,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.03921336473784195,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.004742600742899311,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.07692307692307693,
+          "precision_at_3": 0.038461538461538464,
+          "precision_at_5": 0.02307692307692308,
+          "reciprocal_rank": 0.14051930733022472,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.031103874077258314,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.025932361716728605,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.011764705882352941,
+          "reciprocal_rank": 0.042069085823991895,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.006040887988361799,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.012985914293895317,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.05263157894736842,
+          "precision_at_3": 0.03508771929824561,
+          "precision_at_5": 0.021052631578947368,
+          "reciprocal_rank": 0.12722857110082164,
+          "n_queries": 19
+        }
+      }
+    },
+    "hybrid_tfidf_sbert": {
+      "matcher": "hybrid_tfidf_sbert",
+      "overall": {
+        "precision_at_1": 0.020737327188940093,
+        "precision_at_3": 0.027649769585253458,
+        "precision_at_5": 0.02580645161290323,
+        "reciprocal_rank": 0.11184148201854606,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.04,
+          "precision_at_3": 0.04,
+          "precision_at_5": 0.032,
+          "reciprocal_rank": 0.1348714614087918,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.043478260869565216,
+          "precision_at_3": 0.043478260869565216,
+          "precision_at_5": 0.034782608695652174,
+          "reciprocal_rank": 0.14790696379158552,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.16666666666666666,
+          "precision_at_5": 0.1,
+          "reciprocal_rank": 0.1839080459770115,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.06666666666666667,
+          "reciprocal_rank": 0.09337606837606838,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.1111111111111111,
+          "precision_at_3": 0.07407407407407407,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.1929439717370752,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.05555555555555555,
+          "precision_at_5": 0.05555555555555555,
+          "reciprocal_rank": 0.14724345297423214,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0064516129032258064,
+          "reciprocal_rank": 0.06531044997721297,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.01904761904761905,
+          "reciprocal_rank": 0.09008501082827365,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.055042330233484656,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.055999745020318764,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.058823529411764705,
+          "precision_at_3": 0.0392156862745098,
+          "precision_at_5": 0.023529411764705882,
+          "reciprocal_rank": 0.1670072028056648,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.09523809523809523,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.028571428571428574,
+          "reciprocal_rank": 0.16961628229753728,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.07407407407407407,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.14740752193133144,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.02,
+          "reciprocal_rank": 0.08555994729907773,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.015873015873015872,
+          "precision_at_5": 0.009523809523809525,
+          "reciprocal_rank": 0.10078324240520242,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.038461538461538464,
+          "precision_at_3": 0.05128205128205128,
+          "precision_at_5": 0.038461538461538464,
+          "reciprocal_rank": 0.15094036354719334,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.058823529411764705,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.023529411764705882,
+          "reciprocal_rank": 0.12249719571638197,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.043478260869565216,
+          "precision_at_5": 0.026086956521739136,
+          "reciprocal_rank": 0.10104906527953267,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.06666666666666667,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.16999999999999998,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.07407407407407407,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.1448602988953866,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.039549870980069984,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.02564102564102564,
+          "precision_at_5": 0.038461538461538464,
+          "reciprocal_rank": 0.1075531642760629,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03333333333333333,
+          "precision_at_5": 0.02,
+          "reciprocal_rank": 0.12474193636264574,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.010526315789473684,
+          "reciprocal_rank": 0.07367413425803625,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.05496359417207168,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.05,
+          "reciprocal_rank": 0.09024044205495818,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.05454545454545456,
+          "reciprocal_rank": 0.10573533779764889,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.017543859649122806,
+          "precision_at_5": 0.010526315789473684,
+          "reciprocal_rank": 0.09239203243275124,
+          "n_queries": 19
+        }
+      }
+    },
+    "hybrid_tfidf_sbert_normalized": {
+      "matcher": "hybrid_tfidf_sbert_normalized",
+      "overall": {
+        "precision_at_1": 0.03456221198156682,
+        "precision_at_3": 0.03072196620583717,
+        "precision_at_5": 0.029953917050691243,
+        "reciprocal_rank": 0.1275283120591117,
+        "n_queries": 434,
+        "n_candidates": 952
+      },
+      "by_category": {
+        "AI Engineer": {
+          "precision_at_1": 0.04,
+          "precision_at_3": 0.05333333333333333,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.15885760163022616,
+          "n_queries": 25
+        },
+        "Asst. Manager/ Manger (Administrative)": {
+          "precision_at_1": 0.08695652173913043,
+          "precision_at_3": 0.05797101449275362,
+          "precision_at_5": 0.05217391304347827,
+          "reciprocal_rank": 0.19383846381255185,
+          "n_queries": 23
+        },
+        "Business Development Executive": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.07291666666666666,
+          "n_queries": 2
+        },
+        "Civil Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.06666666666666667,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.1111111111111111,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.044444444444444446,
+          "reciprocal_rank": 0.19930900047052497,
+          "n_queries": 9
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.05555555555555555,
+          "precision_at_3": 0.05555555555555555,
+          "precision_at_5": 0.03333333333333334,
+          "reciprocal_rank": 0.16729577599318673,
+          "n_queries": 18
+        },
+        "Database Administrator (DBA)": {
+          "precision_at_1": 0.03225806451612903,
+          "precision_at_3": 0.01075268817204301,
+          "precision_at_5": 0.012903225806451613,
+          "reciprocal_rank": 0.09648366322822508,
+          "n_queries": 31
+        },
+        "DevOps Engineer": {
+          "precision_at_1": 0.047619047619047616,
+          "precision_at_3": 0.047619047619047616,
+          "precision_at_5": 0.028571428571428574,
+          "reciprocal_rank": 0.13745508091307956,
+          "n_queries": 21
+        },
+        "Executive - VAT": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.041666666666666664,
+          "precision_at_5": 0.025,
+          "reciprocal_rank": 0.10023335687925268,
+          "n_queries": 8
+        },
+        "Executive/ Senior Executive- Trade Marketing, Hygiene Products": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.028571428571428574,
+          "reciprocal_rank": 0.08204513468950239,
+          "n_queries": 21
+        },
+        "Executive/ Sr. Executive -IT": {
+          "precision_at_1": 0.058823529411764705,
+          "precision_at_3": 0.0196078431372549,
+          "precision_at_5": 0.011764705882352941,
+          "reciprocal_rank": 0.12429921017723787,
+          "n_queries": 17
+        },
+        "Full Stack Developer (Python,React js)": {
+          "precision_at_1": 0.09523809523809523,
+          "precision_at_3": 0.07936507936507936,
+          "precision_at_5": 0.047619047619047616,
+          "reciprocal_rank": 0.19648617018860884,
+          "n_queries": 21
+        },
+        "HR Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.037037037037037035,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.100181420491878,
+          "n_queries": 9
+        },
+        "Head of Internal Control & Compliance (ICC) - SEVP/DMD": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03333333333333333,
+          "precision_at_5": 0.02,
+          "reciprocal_rank": 0.10328522640593578,
+          "n_queries": 10
+        },
+        "Intern (Generative AI Engineering - 2D/3D Image Generation)": {
+          "precision_at_1": 0.09523809523809523,
+          "precision_at_3": 0.031746031746031744,
+          "precision_at_5": 0.01904761904761905,
+          "reciprocal_rank": 0.15181724037197222,
+          "n_queries": 21
+        },
+        "Machine Learning (ML) Engineer": {
+          "precision_at_1": 0.038461538461538464,
+          "precision_at_3": 0.02564102564102564,
+          "precision_at_5": 0.03076923076923077,
+          "reciprocal_rank": 0.1320706471501976,
+          "n_queries": 26
+        },
+        "Management Trainee - Mechanical": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.06666433322629756,
+          "n_queries": 17
+        },
+        "Manager- Human Resource Management (HRM)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.02898550724637681,
+          "precision_at_5": 0.034782608695652174,
+          "reciprocal_rank": 0.1038463412273615,
+          "n_queries": 23
+        },
+        "Marketing Officer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.13333333333333333,
+          "precision_at_5": 0.12000000000000002,
+          "reciprocal_rank": 0.27,
+          "n_queries": 5
+        },
+        "Mechanical Designer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.07568526849572602,
+          "n_queries": 9
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.022222222222222223,
+          "reciprocal_rank": 0.10106086563943162,
+          "n_queries": 9
+        },
+        "Network Support Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.02564102564102564,
+          "precision_at_5": 0.05384615384615385,
+          "reciprocal_rank": 0.1307740549101049,
+          "n_queries": 26
+        },
+        "Project Coordinator (Civil)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.04,
+          "reciprocal_rank": 0.11560226323384218,
+          "n_queries": 10
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.05263157894736842,
+          "precision_at_3": 0.017543859649122806,
+          "precision_at_5": 0.010526315789473684,
+          "reciprocal_rank": 0.1166568381153531,
+          "n_queries": 19
+        },
+        "Senior iOS Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.011764705882352941,
+          "reciprocal_rank": 0.06642321996353891,
+          "n_queries": 17
+        },
+        "Site Engineer": {
+          "precision_at_1": 0.25,
+          "precision_at_3": 0.08333333333333333,
+          "precision_at_5": 0.05,
+          "reciprocal_rank": 0.27580492424242425,
+          "n_queries": 4
+        },
+        "Sr.Officer / Executive - Internal Audit": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0303030303030303,
+          "precision_at_5": 0.05454545454545456,
+          "reciprocal_rank": 0.10629767108725491,
+          "n_queries": 11
+        },
+        "System Administrator (Operation & Maintenance of Server, Storage & Service Desk System)": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.03508771929824561,
+          "precision_at_5": 0.03157894736842106,
+          "reciprocal_rank": 0.10166778342260718,
+          "n_queries": 19
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "config": {
+    "eval_split": "test",
+    "ks": [
+      1,
+      3,
+      5
+    ],
+    "split": {
+      "train_frac": 0.8,
+      "val_frac": 0.1,
+      "test_frac": 0.1,
+      "random_seed": 42
+    },
+    "normalize_categories": true,
+    "sbert_checkpoints": {
+      "sbert_pretrained": "sentence-transformers/all-MiniLM-L6-v2",
+      "sbert_multi_qa_minilm_l6_cos_v1": "sentence-transformers/multi-qa-MiniLM-L6-cos-v1"
+    },
+    "labeling_caveat": "Category labels are the consensus of these same matchers (see scripts/build_resume_labels_cache.py) - not a clean baseline comparison. See docs/PHASE3_FINDINGS.md's 'Category label mismatch' section."
+  },
+  "results": {
+    "tfidf": {
+      "matcher": "tfidf",
+      "overall": {
+        "precision_at_1": 0.5833333333333334,
+        "precision_at_3": 0.6666666666666666,
+        "precision_at_5": 0.65,
+        "reciprocal_rank": 0.7070436507936507,
+        "n_queries": 24,
+        "n_candidates": 2174
+      },
+      "by_category": {
+        "Business Development Executive": {
+          "precision_at_1": 0.6666666666666666,
+          "precision_at_3": 0.8888888888888888,
+          "precision_at_5": 0.8666666666666667,
+          "reciprocal_rank": 0.8333333333333334,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.0,
+          "reciprocal_rank": 0.12142857142857143,
+          "n_queries": 2
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.6923076923076923,
+          "precision_at_3": 0.7435897435897435,
+          "precision_at_5": 0.7230769230769231,
+          "reciprocal_rank": 0.8076923076923077,
+          "n_queries": 13
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.6666666666666666,
+          "precision_at_3": 0.8888888888888888,
+          "precision_at_5": 0.8666666666666667,
+          "reciprocal_rank": 0.8333333333333334,
+          "n_queries": 3
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.3333333333333333,
+          "precision_at_3": 0.3333333333333333,
+          "precision_at_5": 0.3333333333333333,
+          "reciprocal_rank": 0.4087301587301588,
+          "n_queries": 3
+        }
+      }
+    },
+    "sbert_pretrained": {
+      "matcher": "sbert_pretrained",
+      "overall": {
+        "precision_at_1": 0.6666666666666666,
+        "precision_at_3": 0.6944444444444445,
+        "precision_at_5": 0.7083333333333334,
+        "reciprocal_rank": 0.7594907407407407,
+        "n_queries": 24,
+        "n_candidates": 2174
+      },
+      "by_category": {
+        "Business Development Executive": {
+          "precision_at_1": 0.3333333333333333,
+          "precision_at_3": 0.6666666666666666,
+          "precision_at_5": 0.7999999999999999,
+          "reciprocal_rank": 0.6666666666666666,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.2,
+          "reciprocal_rank": 0.18055555555555555,
+          "n_queries": 2
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 1.0,
+          "precision_at_3": 0.9487179487179488,
+          "precision_at_5": 0.9076923076923078,
+          "reciprocal_rank": 1.0,
+          "n_queries": 13
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.6666666666666666,
+          "precision_at_3": 0.6666666666666666,
+          "precision_at_5": 0.6666666666666666,
+          "reciprocal_rank": 0.7222222222222222,
+          "n_queries": 3
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.1111111111111111,
+          "precision_at_5": 0.13333333333333333,
+          "reciprocal_rank": 0.2333333333333333,
+          "n_queries": 3
+        }
+      }
+    },
+    "sbert_multi_qa_minilm_l6_cos_v1": {
+      "matcher": "sbert_multi_qa_minilm_l6_cos_v1",
+      "overall": {
+        "precision_at_1": 0.625,
+        "precision_at_3": 0.625,
+        "precision_at_5": 0.6416666666666667,
+        "reciprocal_rank": 0.7122023809523809,
+        "n_queries": 24,
+        "n_candidates": 2174
+      },
+      "by_category": {
+        "Business Development Executive": {
+          "precision_at_1": 1.0,
+          "precision_at_3": 0.8888888888888888,
+          "precision_at_5": 0.9333333333333332,
+          "reciprocal_rank": 1.0,
+          "n_queries": 3
+        },
+        "Data Engineer": {
+          "precision_at_1": 0.0,
+          "precision_at_3": 0.0,
+          "precision_at_5": 0.30000000000000004,
+          "reciprocal_rank": 0.25,
+          "n_queries": 2
+        },
+        "Data Science Engineer": {
+          "precision_at_1": 0.6153846153846154,
+          "precision_at_3": 0.6153846153846154,
+          "precision_at_5": 0.6,
+          "reciprocal_rank": 0.7058608058608058,
+          "n_queries": 13
+        },
+        "Mechanical Engineer": {
+          "precision_at_1": 0.6666666666666666,
+          "precision_at_3": 0.7777777777777778,
+          "precision_at_5": 0.8666666666666667,
+          "reciprocal_rank": 0.7777777777777778,
+          "n_queries": 3
+        },
+        "Senior Software Engineer": {
+          "precision_at_1": 0.6666666666666666,
+          "precision_at_3": 0.6666666666666666,
+          "precision_at_5": 0.5333333333333333,
+          "reciprocal_rank": 0.6944444444444445,
+          "n_queries": 3
+        }
+      }
+    }
+  }
+}
